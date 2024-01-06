@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Me Something</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+</head>
+
+<body>
+    <div id="background"></div>
+    <h1>Customer</h1>
+    <div id="customer" class="singleCard">
+    </div>
+    <h1>Available Words</h1>
+    <div id="words" class="cards">
+    </div>
+    <h1>Selected Words</h1>
+    <div id="selectedWords" class="cards">
+        <div class="card empty" draggable="true">
+            <div draggable="true" class="container">
+                <h4><b></b></h4>
+            </div>
+        </div>
+        <div class="card empty" draggable="true">
+            <div draggable="true" class="container">
+                <h4><b></b></h4>
+            </div>
+        </div>
+        <div class="card empty" draggable="true" id="selected0">
+            <div draggable="true" class="container">
+                <h4><b class="content"></b></h4>
+            </div>
+        </div>
+        <div class="card empty" draggable="true" id="selected1">
+            <div draggable="true" class="container">
+                <h4><b class="content"></b></h4>
+            </div>
+        </div>
+        <div class="card empty" draggable="true">
+            <div draggable="true" class="container">
+                <h4><b></b></h4>
+            </div>
+        </div>
+        <div class="card empty" draggable="true">
+            <div draggable="true" class="container">
+                <h4><b></b></h4>
+            </div>
+        </div>
+    </div>
+    <div id="controls">
+        <button type="button" id="next">Next Customer</button>
+        <button type="button" id="new">New Words</button>
+    </div>
+    <div id="customerList"></div>
+    <script type="module" src="./assets/js/main.mjs"></script>
+</body>
+
+</html>

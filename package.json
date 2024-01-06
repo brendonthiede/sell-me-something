@@ -1,0 +1,9 @@
+{
+   "type": "module",
+   "dependencies": {
+       "cli-table": "^0.3.11"
+   },
+   "devDependencies": {
+       "eslint": "^8.56.0"
+   }
+}

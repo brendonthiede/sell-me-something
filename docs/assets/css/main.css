@@ -1,0 +1,133 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+body {
+   font-family: "Arial", sans-serif;
+   font-size: 16px;
+   line-height: 1.5;
+   text-align: center;
+   background-color: #d6d6d6;
+}
+
+div {
+   z-index: 1;
+}
+
+/* Container for background image */
+#background {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   margin: 0;
+   padding: 0;
+   z-index: -1;
+}
+
+/* Pseudo-element for background image */
+#background::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: url('../images/fist.png');
+   background-size: cover;
+   opacity: 0.2;
+   z-index: -2;
+}
+
+#controls {
+   position: absolute;
+   bottom: 1em;
+   left: 1em;
+}
+
+button {
+   background-color: #ffbebe;
+   border: 2px solid #000;
+   border-radius: 15px;
+   cursor: pointer;
+   font-size: 1em;
+   font-weight: bold;
+   margin: 0 0.5em;
+   padding: 1.5em 2em;
+   transition: 0.3s;
+}
+
+#customer .card {
+   background-color: #5aa1f3;
+   border: 2px solid #258bff;
+   border-radius: 15px;
+}
+
+#words .card,
+#selectedWords .card {
+   background-color: #90ffba;
+   border: 2px solid #63ff9f;
+   border-radius: 15px;
+}
+
+#selectedWords .card {
+   background-color: #90ffba;
+   border: 2px solid #4cd380;
+   border-radius: 15px;
+}
+
+.empty {
+   opacity: 0;
+}
+
+.card {
+   border-radius: 15px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   transition: 0.3s;
+   margin: 10px;
+}
+
+.singleCard {
+   margin-left: 35%;
+   margin-right: 35%;
+}
+
+.cards {
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+}
+
+/* on mobile, only show 4 columns per row */
+@media (max-width: 600px) {
+   .cards {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}
+
+card:hover {
+   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+   transform: scale(1.05);
+}
+
+card.selected {
+   border: 2px solid #000;
+}
+
+container {
+   padding: 2px 16px;
+   text-align: center;
+}
+
+img {
+   width: 100%;
+}
+
+@media print {
+   .cards {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .card:hover {
+      box-shadow: none;
+      transform: none;
+   }
+}

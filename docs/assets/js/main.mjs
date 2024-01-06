@@ -1,4 +1,4 @@
-import { cards } from "./cards.mjs";
+import { cards } from './cards.mjs';
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -31,20 +31,20 @@ function createCard(text) {
 }
 
 function selectCard(card) {
-    const selected0 = document.querySelector("#selected0");
-    const selected1 = document.querySelector("#selected1");
+    const selected0 = document.querySelector('#selected0');
+    const selected1 = document.querySelector('#selected1');
     let targetCard = selected1;
 
     if (selected0.innerText === card.innerText || selected1.innerText === card.innerText) {
         return;
     }
 
-    if (selected0.innerText === "") {
+    if (selected0.innerText === '') {
         targetCard = selected0;
     }
-    targetCard.querySelector(".content").innerText = card.innerText;
-    targetCard.classList.remove("empty");
-    targetCard.classList.add("visible");
+    targetCard.querySelector('.content').innerText = card.innerText;
+    targetCard.classList.remove('empty');
+    targetCard.classList.add('visible');
     document.querySelectorAll('div.visible').forEach(card => {
         addDragHandlers(card);
         card.onclick = function () {
@@ -55,22 +55,22 @@ function selectCard(card) {
 
 function unSelectCard(card) {
     // get the id of card
-    const selected1 = document.querySelector("#selected1");
-    if (card.id === "selected0" && selected1.innerText !== "") {
-        card.querySelector(".content").innerText = selected1.innerText;
+    const selected1 = document.querySelector('#selected1');
+    if (card.id === 'selected0' && selected1.innerText !== '') {
+        card.querySelector('.content').innerText = selected1.innerText;
         card = selected1;
     }
 
-    card.classList.add("empty");
-    card.classList.remove("visible");
-    card.querySelector(".content").innerText = "";
+    card.classList.add('empty');
+    card.classList.remove('visible');
+    card.querySelector('.content').innerText = '';
     document.querySelectorAll('div.visible').forEach(addDragHandlers);
 }
 
 function setNextCustomerName() {
-    const customerContainer = document.getElementById("customer");
+    const customerContainer = document.getElementById('customer');
     const customer = nextCustomer();
-    customerContainer.innerHTML = "";
+    customerContainer.innerHTML = '';
     const card = createCard(customer);
     customerContainer.appendChild(card);
     // const img = document.getElementById("customerImage");
@@ -80,8 +80,8 @@ function setNextCustomerName() {
 }
 
 function setWordCards() {
-    const wordContainer = document.getElementById("words");
-    wordContainer.innerHTML = "";
+    const wordContainer = document.getElementById('words');
+    wordContainer.innerHTML = '';
     for (let i = 0; i < 6; i++) {
         const word = WORDS[wordIndex++];
         if (wordIndex >= WORDS.length) {
@@ -93,7 +93,7 @@ function setWordCards() {
     }
 
     // Add event listeners to each card to select it on click
-    document.querySelectorAll("#words>div.card").forEach(card => {
+    document.querySelectorAll('#words>div.card').forEach(card => {
         card.onclick = function () {
             selectCard(this);
         };
@@ -101,21 +101,28 @@ function setWordCards() {
 
     // Add event listeners for drag and drop to reorder the cards
     document.querySelectorAll('#words>div.card').forEach(addDragHandlers);
+    unSelectCard(document.querySelector('#selected1'));
+    unSelectCard(document.querySelector('#selected0'));
 }
+
+function changeAll() {
+    setNextCustomerName();
+    setWordCards();
+}
+
+document.getElementById('next').onclick = setNextCustomerName;
+document.getElementById('new').onclick = setWordCards;
+document.getElementById('reload').onclick = changeAll;
+changeAll();
 
 // call this function to show a list of customers with image search links
-function customerList() {
-    CUSTOMERS.forEach(customer => {
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="https://www.bing.com/images/search?qft=+filterui:photo-clipart+filterui:license-L2_L3_L4&q=${customer}" target="_blank">${customer}</a>`;
-        document.getElementById("customerList").appendChild(li);
-    });
-}
-
-document.getElementById("next").onclick = setNextCustomerName;
-setNextCustomerName();
-document.getElementById("new").onclick = setWordCards;
-setWordCards();
+// function customerList() {
+//     CUSTOMERS.forEach(customer => {
+//         const li = document.createElement('li');
+//         li.innerHTML = `<a href="https://www.bing.com/images/search?qft=+filterui:photo-clipart+filterui:license-L2_L3_L4&q=${customer}" target="_blank">${customer}</a>`;
+//         document.getElementById('customerList').appendChild(li);
+//     });
+// }
 
 // customerList();
 
